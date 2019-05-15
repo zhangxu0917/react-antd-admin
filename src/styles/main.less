@@ -1,0 +1,36 @@
+@import '~antd/dist/antd.css';
+@import './default';
+
+.admin.container {
+  display: flex;
+  .nav-left {
+    min-width: 200px;
+    width: 200px;
+    height: calc(100vh);
+    background-color: #001529;
+    .logo-container {
+      background-color: #002140;
+      line-height: 90px;
+      padding-left: 20px;
+      img {
+        height: 35px;
+      }
+      h1 {
+        color: white;
+        font-size: 20px;
+        display: inline-block;
+        margin: 0;
+        padding-left: 10px;
+        vertical-align: middle;
+      }
+    }
+  }
+  .main {
+    flex: 1;
+    height: calc(100vh);
+    background-color: @colorL;
+    .content {
+      padding: 20px;
+    }
+  }
+}
