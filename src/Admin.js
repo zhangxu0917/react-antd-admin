@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import NavLeft from './components/navLeft'
 import Header from './components/header'
-import Home from './pages/home/index'
 import Footer from './components/footer'
 import './styles/main.less'
 
@@ -19,7 +18,7 @@ export default class Admin extends Component {
         <section className="main">
           <Header/>
           <section className="content">
-            <Home></Home>
+            {this.props.children}
           </section>
           <Footer/>
         </section>

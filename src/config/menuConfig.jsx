@@ -16,7 +16,7 @@ export default [{
     key: '/admin/ui/buttons'
   }, {
     title: '弹窗',
-    key: '/admin/ui/model'
+    key: '/admin/ui/modals'
   }, {
     title: 'Loading',
     key: '/admin/ui/loadings'

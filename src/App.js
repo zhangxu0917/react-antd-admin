@@ -1,29 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+/*
+ * @Author: Zhangxu
+ * @Date: 2019-05-16 17:48
+ * @LastEditors: Zhangxu
+ * @LastEditTime: 2019-05-16 17:48
+ */
 
-import {Button} from 'antd'
+import React, { Component } from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Button>111</Button>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  componentDidMount () {
+    console.log(this.props)
+  }
+
+  render () {
+    return (
+      <div className="App">
+        {this.props.children}
+      </div>
+    );
+  }
 }
 
 export default App;
+

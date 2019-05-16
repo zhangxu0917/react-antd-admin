@@ -5,7 +5,7 @@ import Axios from '../../axios/index'
 import './index.less'
 
 
-class MyComponent extends Component {
+class Header extends Component {
 	componentWillMount() {
 		this.setState({
 			username: 'aaaa'
@@ -58,6 +58,6 @@ class MyComponent extends Component {
 	}
 }
 
-MyComponent.propTypes = {};
+Header.propTypes = {};
 
-export default MyComponent;
+export default Header;

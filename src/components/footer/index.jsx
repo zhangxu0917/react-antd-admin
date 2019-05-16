@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './index.less'
 
-class MyComponent extends Component {
+class Footer extends Component {
 	render() {
 		return (
 			<div className="footer">
@@ -11,6 +11,6 @@ class MyComponent extends Component {
 	}
 }
 
-MyComponent.propTypes = {};
+Footer.propTypes = {};
 
-export default MyComponent;
+export default Footer;
