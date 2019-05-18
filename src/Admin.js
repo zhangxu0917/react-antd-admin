@@ -6,7 +6,7 @@ import './styles/main.less'
 
 export default class Admin extends Component {
   constructor (props) {
-    super(props)
+    super(props);
     this.state = {}
   }
   render() {

@@ -38,7 +38,7 @@ class Modals extends Component {
 
 	render() {
 		return (
-			<div className={'page-ui-modals'}>
+			<div className={'page-ui page-ui-modals'}>
 				<Card className={'card-container'} title={'基础模态框'}>
 					<Button type={'primary'} onClick={this.handleOpen.bind(this, 'showModal1')}>Open</Button>
 					<Button type={'primary'} onClick={this.handleOpen.bind(this, 'showModal2')}>自定义页脚</Button>

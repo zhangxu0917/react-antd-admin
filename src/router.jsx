@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import App from './App'
 import Login from './pages/login/index'
+import Register from './pages/register/index'
 import Admin from './Admin'
 import Buttons from './pages/ui/buttons/index'
 import Modals from './pages/ui/modals/index'
@@ -16,22 +17,25 @@ class IRouter extends Component {
 	render() {
 		return (
 				<Router>
-					<App>
-						<Route path={'/login'} component={Login}/>
-						<Route path={'/admin'} render={() =>
-							<Admin>
-								<Route path={"/admin/ui/buttons"} component={Buttons}/>
-								<Route path={"/admin/ui/modals"} component={Modals}/>
-								<Route path={"/admin/ui/loadings"} component={Loadings}/>
-								<Route path={"/admin/ui/notification"} component={Notification}/>
-								<Route path={"/admin/ui/messages"} component={Messages}/>
-								<Route path={"/admin/ui/tabs"} component={Tabs}/>
-								<Route path={"/admin/ui/gallery"} component={Gallery}/>
-								<Route path={"/admin/ui/carousel"} component={Carousel}/>
-							</Admin>
-						}/>
-						<Router component={Login}></Router>
-					</App>
+					<Switch>
+						<App>
+							<Route path={'/login'} component={Login}/>
+							<Route path={'/admin'} render={() =>
+								<Admin>
+									<Route path={"/admin/ui/buttons"} component={Buttons}/>
+									<Route path={"/admin/ui/modals"} component={Modals}/>
+									<Route path={"/admin/ui/loadings"} component={Loadings}/>
+									<Route path={"/admin/ui/notification"} component={Notification}/>
+									<Route path={"/admin/ui/messages"} component={Messages}/>
+									<Route path={"/admin/ui/tabs"} component={Tabs}/>
+									<Route path={"/admin/ui/gallery"} component={Gallery}/>
+									<Route path={"/admin/ui/carousel"} component={Carousel}/>
+									<Route path={"/admin/form/login"} component={Login}/>
+									<Route path={"/admin/form/reg"} component={Register}/>
+								</Admin>
+							}/>
+						</App>
+					</Switch>
 				</Router>
 		);
 	}

@@ -1,10 +1,3 @@
-/*
- * @Author: Zhangxu
- * @Date: 2019-05-16 20:15
- * @LastEditors: Zhangxu
- * @LastEditTime: 2019-05-16 20:15
- */
-
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Card, Button, Radio} from 'antd'
@@ -35,7 +28,7 @@ class Buttons extends Component {
 
 	render() {
 		return (
-			<div className={'page-ui-button'}>
+			<div className={'page-ui page-ui-button'}>
 				<Card className={'card-container'} title={'基础按钮'}>
 					<Button type={'primary'}>Imooc</Button>
 					<Button>Imooc</Button>

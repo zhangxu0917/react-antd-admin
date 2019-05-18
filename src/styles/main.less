@@ -36,8 +36,7 @@
   }
 }
 
-.page-ui-button,
-.page-ui-modals{
+.page-ui {
   .card-container {
     margin-bottom: 10px;
   }
@@ -48,6 +47,36 @@
     button{
       margin: 0;
     }
+  }
+  .slider-container {
+    height: 240px;
+    .img-container {
+      height: 240px;
+    }
+  }
+  .ant-carousel .slick-slide {
+    text-align: center;
+    height: 240px;
+    line-height: 240px;
+    font-size: 28px;
+    background: #364d79;
+    overflow: hidden;
+    .img-container {
+      -webkit-background-size: cover;
+      background-size: cover;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .ant-carousel .slick-slide h3 {
+    color: #fff;
+  }
+}
+
+.page-ui-loading {
+  .spin {
+    margin-right: 15px;
   }
 }
 
@@ -69,4 +98,9 @@
   vertical-align: middle;
   top: 0;
   text-align: left;
+}
+
+.avatar-uploader > .ant-upload {
+  width: 128px;
+  height: 128px;
 }
