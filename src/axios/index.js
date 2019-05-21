@@ -20,11 +20,11 @@ export default class Axios {
 	}
 
 	static request(options) {
-		let loading;
+		/*let loading;
 		if (options.data && options.data.isShowLoading !== false) {
 			loading = document.getElementById("ajaxLoading");
 			loading.style.display = 'block'
-		}
+		}*/
 		const baseApi = 'https://www.easy-mock.com/mock/5cdfc6531446071259d0405e/react_antd_admin';
 
 		return new Promise((resolve, reject) => {
@@ -33,7 +33,7 @@ export default class Axios {
 				method: options.method || 'get',
 				baseURL: baseApi,
 				timeout: 5000,
-				param: (options.data && options.data.params) || ''
+				params: (options.data && options.data.params) || ''
 			}).then((response) => {
 				if (response.status + '' === '200') {
 					let res = response.data;

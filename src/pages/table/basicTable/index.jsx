@@ -2,21 +2,30 @@ import React, {Component} from 'react';
 import {Card, Table, Button, Modal} from 'antd'
 import axios from '../../../axios/index'
 import {hobby, status, sex} from '../../../config/appConfig'
+import util from '../../../util/util'
 
 class BasicTable extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
 			dynamicUserList: [],
+			dynamicUserList02: [],
 			selectedRowKeys: [],
 			selectedRows: [],
 			selectedRowCheckKeys: [],
 			loading: false,
+			loading02: false,
+			pagination: {}
+		}
+		this.params = {
+			page: 1
 		}
 	}
 
-	componentWillMount() {
-		this.getDynamicTableList()
+
+	componentDidMount() {
+		this.getDynamicTableList();
+		this.getDynamicTableList02()
 	}
 
 	getDynamicTableList() {
@@ -38,6 +47,35 @@ class BasicTable extends Component {
 		})
 	}
 
+	getDynamicTableList02() {
+		let _this = this;
+		this.setState({
+			loading02: true
+		});
+		axios.request({
+			method: 'get',
+			url: '/api/user_pagination',
+			data: {
+				params: {
+					page: this.params.page
+				}
+			}
+		}).then(res => {
+			this.setState({
+				dynamicUserList02: res.result,
+				loading02: false,
+				pagination: util.pagination(res, (current) => {
+					_this.params.page = current;
+					this.getDynamicTableList02()
+				})
+			})
+		}, err => {
+			this.setState({
+				loading02: false
+			})
+		})
+	}
+
 	onRowClick(record, index) {
 		let selectKey = [index];
 		this.setState({
@@ -46,7 +84,7 @@ class BasicTable extends Component {
 		})
 	}
 
-	handleDelete () {
+	handleDelete() {
 		let rows = this.state.selectedRows;
 		let ids = this.state.selectedRows.map(item => item.id)
 
@@ -168,7 +206,7 @@ class BasicTable extends Component {
 		return (
 			<div>
 				<Card title={"基础表格"}>
-					<Table dataSource={UserList} columns={basicColumns} pagination={false}/>
+					<Table dataSource={UserList} columns={basicColumns} pagination={false} rowKey={'id'}/>
 				</Card>
 				<Card title={"动态数据渲染表格-Mock"} style={{marginTop: 10}}>
 					<Table columns={basicColumns} dataSource={this.state.dynamicUserList} rowKey={'id'}
@@ -176,6 +214,7 @@ class BasicTable extends Component {
 				</Card>
 				<Card title={"Mock-单选"} style={{marginTop: 10}}>
 					<Table
+						rowKey={'id'}
 						columns={basicColumns}
 						loading={this.state.loading}
 						dataSource={this.state.dynamicUserList}
@@ -202,10 +241,23 @@ class BasicTable extends Component {
 						>删除</Button>
 					</div>
 					<Table
+						rowKey={'id'}
 						loading={this.state.loading}
 						dataSource={this.state.dynamicUserList}
 						columns={basicColumns}
 						rowSelection={rowCheckSelection}
+						bordered/>
+				</Card>
+				<Card
+					title={"Mock-表格分页"}
+					style={{marginTop: 10}}
+				>
+					<Table
+						rowKey={'id'}
+						loading={this.state.loading02}
+						dataSource={this.state.dynamicUserList02}
+						columns={basicColumns}
+						pagination={this.state.pagination}
 						bordered/>
 				</Card>
 			</div>
