@@ -3,18 +3,18 @@ import menuConfig from '../../config/menuConfig'
 import {Menu} from 'antd'
 import {NavLink} from 'react-router-dom'
 
-const SubMenu = Menu.SubMenu
+const SubMenu = Menu.SubMenu;
 
 export default class NavLeft extends Component {
 	constructor (props) {
-		super(props)
+		super(props);
 		this.state = {
 			menuTreeNode: null
 		}
 	}
 
 	componentWillMount() {
-		const menuTreeNode = this.renderMenu(menuConfig)
+		const menuTreeNode = this.renderMenu(menuConfig);
 		this.setState({
 			menuTreeNode
 		})

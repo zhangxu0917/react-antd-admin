@@ -65,7 +65,11 @@ export default [{
 }, {
   title: '订单管理',
   key: '/admin/order',
-  children: [{
+  children: [
+  {
+    title: '订单列表',
+    key: '/admin/order/index'
+  }, {
     title: '订单详情',
     key: 'detail'
   }, {

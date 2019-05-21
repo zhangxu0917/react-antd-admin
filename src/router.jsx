@@ -14,6 +14,8 @@ import Gallery from './pages/ui/gallery/index'
 import Carousel from './pages/ui/carousel/index'
 import BasicTable from './pages/table/basicTable/index'
 import HighTable from './pages/table/HighTable/index'
+import City from './pages/city/index'
+import OrderIndex from './pages/order/index'
 
 class IRouter extends Component {
 	render() {
@@ -36,6 +38,8 @@ class IRouter extends Component {
 									<Route path={"/admin/form/reg"} component={Register}/>
 									<Route path={"/admin/table/basic"} component={BasicTable}/>
 									<Route path={"/admin/table/high"} component={HighTable}/>
+									<Route path={"/admin/city"} component={City}/>
+									<Route path={"/admin/order"} component={OrderIndex}/>
 								</Admin>
 							}/>
 						</App>

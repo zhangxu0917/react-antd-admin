@@ -7,6 +7,7 @@ export default {
 		return ''
 	},
 	pagination(data, callback) {
+		console.log(data)
 		return {
 			current: data.page,
 			pageSize: data.page_size,

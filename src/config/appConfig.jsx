@@ -1,4 +1,3 @@
-import {Select} from "antd";
 import React from "react";
 
 export const hobby = {
@@ -24,4 +23,9 @@ export const status = {
 export const sex = {
 	'1': '男',
 	'2': '女'
+};
+
+export const OrderStatus = {
+	'1': '进行中',
+	'2': '行程结束'
 };
