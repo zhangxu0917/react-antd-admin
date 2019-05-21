@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Card, Table} from 'antd'
+import {Card, Table, Badge, Modal, message, Button} from 'antd'
 import axios from '../../../axios/index'
 import {hobby, status, sex} from '../../../config/appConfig'
 
@@ -14,12 +14,18 @@ class HighTable extends Component {
 		}
 	}
 
+	handleChangeTable(pagination, filters, sorter) {
+		console.log(sorter)
+		this.setState({
+			sortOrder: sorter.order
+		})
+	}
+
 	componentDidMount() {
 		this.getDynamicTableList();
 	}
 
 	getDynamicTableList() {
-		let _this = this;
 		this.setState({
 			loading0: true
 		});
@@ -40,6 +46,20 @@ class HighTable extends Component {
 			this.setState({
 				loading: false
 			})
+		})
+	}
+
+	// FIXME: 删除操作
+	handleDelete (e, item) {
+		e.preventDefault();
+		let id = item.id;
+		Modal.confirm({
+			title: '提示',
+			content: '您确定要删除当前数据么？',
+			onOk: () => {
+				message.success('操作成功');
+				this.getDynamicTableList()
+			}
 		})
 	}
 
@@ -150,23 +170,23 @@ class HighTable extends Component {
 			}, {
 				title: '生日',
 				dataIndex: 'birthday',
-				key: 'birthday',
+				key: 'birthday1',
 			}, {
 				title: '生日',
 				dataIndex: 'birthday',
-				key: 'birthday',
+				key: 'birthday2',
 			}, {
 				title: '生日',
 				dataIndex: 'birthday',
-				key: 'birthday',
+				key: 'birthday3',
 			}, {
 				title: '生日',
 				dataIndex: 'birthday',
-				key: 'birthday',
+				key: 'birthday4',
 			}, {
 				title: '生日',
 				dataIndex: 'birthday',
-				key: 'birthday',
+				key: 'birthday5',
 			}, {
 				title: '地址',
 				dataIndex: 'address',
@@ -182,6 +202,141 @@ class HighTable extends Component {
 			}
 		];
 
+		const basicColumns03 = [
+			{
+				title: 'id',
+				dataIndex: 'id',
+				key: 'id',
+			},
+			{
+				title: '用户名',
+				dataIndex: 'username',
+				key: 'username',
+			},
+			{
+				title: '性别',
+				dataIndex: 'sex',
+				key: 'sex',
+				render(state) {
+					return sex[state]
+				},
+			},
+			{
+				title: '年龄',
+				dataIndex: 'age',
+				key: 'age',
+				sorter: (a, b) => {
+					return a.age - b.age
+				},
+				sortOrder: this.state.sortOrder
+			},
+			{
+				title: '状态',
+				dataIndex: 'status',
+				key: 'status',
+				render(state) {
+					return status[state]
+				},
+			},
+			{
+				title: '爱好',
+				dataIndex: 'hobby',
+				key: 'hobby',
+				render(state) {
+					return state.map(item => {
+						return hobby[item]
+					}).join('，')
+				},
+			},
+			{
+				title: '生日',
+				dataIndex: 'birthday',
+				key: 'birthday',
+			},
+			{
+				title: '地址',
+				dataIndex: 'address',
+				key: 'address',
+			},
+			{
+				title: '早起时间',
+				dataIndex: 'time',
+				key: 'time',
+			}
+		];
+
+		const basicColumns04 = [
+			{
+				title: 'id',
+				dataIndex: 'id',
+				key: 'id',
+			},
+			{
+				title: '用户名',
+				dataIndex: 'username',
+				key: 'username',
+			},
+			{
+				title: '性别',
+				dataIndex: 'sex',
+				key: 'sex',
+				render(state) {
+					return sex[state]
+				},
+			},
+			{
+				title: '年龄',
+				dataIndex: 'age',
+				key: 'age',
+			},
+			{
+				title: '状态',
+				dataIndex: 'status',
+				key: 'status',
+				render(state) {
+					const config = {
+						'1': <Badge status={"success"} text={"成功"}/>,
+						'2': <Badge status={"error"} text={"报错"}/>,
+						'3': <Badge status={"default"} text={"正常"}/>,
+						'4': <Badge status={"processing"} text={"进行中"}/>,
+						'5': <Badge status={"warning"} text={"警告"}/>
+					}
+					return config[state]
+				},
+			},
+			{
+				title: '爱好',
+				dataIndex: 'hobby',
+				key: 'hobby',
+				render(state) {
+					return state.map(item => {
+						return hobby[item]
+					}).join('，')
+				},
+			},
+			{
+				title: '生日',
+				dataIndex: 'birthday',
+				key: 'birthday',
+			},
+			{
+				title: '地址',
+				dataIndex: 'address',
+				key: 'address',
+			},
+			{
+				title: '早起时间',
+				dataIndex: 'time',
+				key: 'time',
+			},
+			{
+				title: '操作',
+				render: (text, item) => {
+					return <Button type={'link'} size={'small'} onClick={(e) => {this.handleDelete(e, item)}}>删除</Button>
+				}
+			}
+		];
+
 		return (
 			<div className={"page-table"}>
 				<Card title={'头部固定'}>
@@ -192,6 +347,7 @@ class HighTable extends Component {
 						pagination={false}
 						scroll={{y: 240}}
 						bordered={true}
+						rowKey={'id'}
 					/>
 				</Card>
 				<Card title={"左侧固定"} style={{marginTop: 10}}>
@@ -202,13 +358,29 @@ class HighTable extends Component {
 						pagination={false}
 						scroll={{x: '170%'}}
 						bordered={true}
+						rowKey={'id'}
 					/>
 				</Card>
 				<Card title={"排序"} style={{marginTop: 10}}>
-
+					<Table
+						rowKey={'id'}
+						columns={basicColumns03}
+						dataSource={this.state.dynamicUserList}
+						loading={this.state.loading}
+						pagination={false}
+						bordered={true}
+						onChange={this.handleChangeTable.bind(this)}
+					/>
 				</Card>
 				<Card title={"操作按钮"} style={{marginTop: 10}}>
-
+					<Table
+						rowKey={'id'}
+						columns={basicColumns04}
+						dataSource={this.state.dynamicUserList}
+						loading={this.state.loading}
+						pagination={false}
+						bordered={true}
+					/>
 				</Card>
 			</div>
 		);

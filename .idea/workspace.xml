@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30c53baa-c89f-4c92-ad72-7ac3d7088fa0" name="Default Changelist" comment="修改">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/axios/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/axios/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/table/HighTable/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/table/HighTable/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/table/basicTable/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/table/basicTable/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/util/util.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/util/util.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -22,10 +18,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/table/HighTable/index.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="174" column="17" selection-start-line="174" selection-start-column="17" selection-end-line="174" selection-end-column="17" />
+            <state relative-caret-position="284">
+              <caret line="334" column="36" selection-start-line="334" selection-start-column="36" selection-end-line="334" selection-end-column="36" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
+                <element signature="e#803#1583#0" />
+                <element signature="e#1745#2948#0" />
+                <element signature="e#3032#4073#0" />
               </folding>
             </state>
           </provider>
@@ -157,6 +156,8 @@
       <find>pagination</find>
       <find>getDynamicTableList02</find>
       <find>dynamicUserList</find>
+      <find>handleChangeTable</find>
+      <find>handleDelete</find>
     </findStrings>
     <replaceStrings>
       <replace>Header</replace>
@@ -364,12 +365,12 @@
       <workItem from="1558131081582" duration="11421000" />
       <workItem from="1558322036213" duration="1359000" />
       <workItem from="1558360287351" duration="817000" />
-      <workItem from="1558403925656" duration="9558000" />
+      <workItem from="1558403925656" duration="11696000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="72694000" />
+    <option name="totallyTimeSpent" value="74832000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -384,7 +385,7 @@
     <frame x="-1920" y="23" width="1920" height="1057" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15429173" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15429173" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -399,7 +400,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32953367" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.22797927" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.22797927" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32953367" />
       <window_info anchor="bottom" id="DB Execution Console" order="12" />
       <window_info anchor="bottom" id="TypeScript" order="13" />
@@ -815,10 +816,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/table/HighTable/index.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="174" column="17" selection-start-line="174" selection-start-column="17" selection-end-line="174" selection-end-column="17" />
+        <state relative-caret-position="284">
+          <caret line="334" column="36" selection-start-line="334" selection-start-column="36" selection-end-line="334" selection-end-column="36" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#803#1583#0" />
+            <element signature="e#1745#2948#0" />
+            <element signature="e#3032#4073#0" />
           </folding>
         </state>
       </provider>
