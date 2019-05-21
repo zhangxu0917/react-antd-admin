@@ -12,6 +12,8 @@ import Messages from './pages/ui/messages/index'
 import Tabs from './pages/ui/tabs/index'
 import Gallery from './pages/ui/gallery/index'
 import Carousel from './pages/ui/carousel/index'
+import BasicTable from './pages/table/basicTable/index'
+import HighTable from './pages/table/HighTable/index'
 
 class IRouter extends Component {
 	render() {
@@ -32,6 +34,8 @@ class IRouter extends Component {
 									<Route path={"/admin/ui/carousel"} component={Carousel}/>
 									<Route path={"/admin/form/login"} component={Login}/>
 									<Route path={"/admin/form/reg"} component={Register}/>
+									<Route path={"/admin/table/basic"} component={BasicTable}/>
+									<Route path={"/admin/table/high"} component={HighTable}/>
 								</Admin>
 							}/>
 						</App>
