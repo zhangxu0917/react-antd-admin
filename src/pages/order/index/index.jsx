@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import {Card, Modal, Form, Select, Button, Table, DatePicker, Badge} from 'antd'
-import axios from '../../axios/index'
-import Util from '../../util/util'
-import {OrderStatus} from '../../config/appConfig'
+import {Card, Modal, Form, Select, Button, Table, DatePicker, Badge} from 'antd/lib/index'
+import axios from '../../../axios'
+import Util from '../../../util/util'
+import {OrderStatus} from '../../../config/appConfig'
 
 const FormItem = Form.Item;
 const Option = Select.Option
@@ -13,7 +13,9 @@ class OrderIndex extends Component {
 		this.state = {
 			list: [],
 			loading: false,
-			pagination: {}
+			pagination: {},
+			selectedRowKeys: [],
+			selectedRow: null
 		};
 		this.params = {
 			page: 1
@@ -22,6 +24,18 @@ class OrderIndex extends Component {
 
 	componentDidMount() {
 		this.requestList()
+	}
+
+	openOrderDetail () {
+		let item = this.state.selectedRow
+		if (!item) {
+			Modal.info({
+				title: '提示',
+				content: '您当前还未选择任何订单'
+			});
+			return
+		}
+		this.props.history.push(`/common/order/${item.id}`)
 	}
 
 	requestList () {
@@ -109,22 +123,39 @@ class OrderIndex extends Component {
 			dataIndex: 'user_pay'
 		}];
 
+		const rowSelection = {
+			type: 'radio',
+			selectedRowKeys: this.state.selectedRowKeys
+		};
+		const onRow = (record, index) => {
+			return {
+				onClick: event => {
+					this.setState({
+						selectedRowKeys: [index],
+						selectedRow: record
+					})
+				}
+			}
+		};
+
 		return (
 			<div>
 				<Card>
 					<FilterForm wrappedComponentRef={(inst) => {this.filterForm = inst}} search={this.requestList.bind(this)}/>
 				</Card>
 				<Card style={{marginTop: 10}}>
-					<Button type={"primary"} style={{marginRight: 10}}>订单详情</Button>
+					<Button type={"primary"} style={{marginRight: 10}} onClick={this.openOrderDetail.bind(this)}>订单详情</Button>
 					<Button type={"primary"}>结束订单</Button>
 				</Card>
-				<Card>
+				<Card style={{marginTop: 10}}>
 					<Table
 						loading={this.state.loading}
 						columns={columns}
 						bordered={true}
 						dataSource={this.state.list}
 						pagination={this.state.pagination}
+						rowSelection={rowSelection}
+						onRow={onRow}
 					/>
 				</Card>
 			</div>

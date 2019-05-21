@@ -2,21 +2,31 @@ import React, {Component} from 'react';
 import {Row, Col} from 'antd'
 import Util from '../../util/util'
 import Axios from '../../axios/index'
+import PropTypes from 'prop-types';
 import './index.less'
 
 
 class Header extends Component {
 	componentWillMount() {
-		this.setState({
-			username: 'aaaa'
-		})
-		setInterval(() => {
+
+		let interval = setInterval(() => {
 			let sysTime = Util.formatDate(new Date().getTime())
 			this.setState({
 				sysTime
 			})
-		}, 1000)
+		}, 1000);
+		this.setState({
+			username: 'aaaa',
+			interval
+		});
 		this.getWeatherAPIDate()
+	}
+
+	componentWillUnmount() {
+		clearTimeout(this.state.interval)
+		this.setState({
+			interval: null
+		})
 	}
 
 
@@ -35,29 +45,52 @@ class Header extends Component {
 	}
 
 	render() {
+		const menuType = this.props.menuType;
 		return (
 			<div className="header">
 				<Row className="header-top">
-					<Col span={24}>
-						<span>欢迎，{this.state.username}</span>
-						<a href="#">退出</a>
-					</Col>
+					{
+						menuType ? (
+							<section>
+								<Col span={6} style={{textAlign: 'left'}}>
+									<img src={"/assets/logo-ant.svg"} alt="" width={40} style={{marginRight: 10}}/>
+									<span style={{fontSize: '18px', fontWeight: 'bolder'}}>React AntD 通用管理系统</span>
+								</Col>
+								<Col span={18}>
+									<span>欢迎，{this.state.username}</span>
+									<a href="#">退出</a>
+								</Col>
+							</section>
+						) : (
+							<Col span={24}>
+								<span>欢迎，{this.state.username}</span>
+								<a href="#">退出</a>
+							</Col>
+						)
+					}
+
 				</Row>
-				<Row className="breadcrumb">
-					<Col span={4} className="breadcrumb-title">
-						首页
-					</Col>
-					<Col span={20} className="weather">
-						<span className="date">{this.state.sysTime}</span>
-						<img className="weather-img" src={this.state.dayPictureUrl} alt=""/>
-						<span className="weather-detail">{this.state.weather}</span>
-					</Col>
-				</Row>
+				{
+					menuType
+						? ''
+						: (<Row className="breadcrumb">
+							<Col span={4} className="breadcrumb-title">
+								首页
+							</Col>
+							<Col span={20} className="weather">
+								<span className="date">{this.state.sysTime}</span>
+								<img className="weather-img" src={this.state.dayPictureUrl} alt=""/>
+								<span className="weather-detail">{this.state.weather}</span>
+							</Col>
+						</Row>)
+				}
 			</div>
 		);
 	}
 }
 
-Header.propTypes = {};
+Header.propTypes = {
+	menuType: PropTypes.string
+};
 
 export default Header;

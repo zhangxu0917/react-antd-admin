@@ -15,7 +15,9 @@ import Carousel from './pages/ui/carousel/index'
 import BasicTable from './pages/table/basicTable/index'
 import HighTable from './pages/table/HighTable/index'
 import City from './pages/city/index'
-import OrderIndex from './pages/order/index'
+import OrderIndex from './pages/order/index/index'
+import OrderDetail from './pages/order/detail/index'
+import Common from './Common'
 
 class IRouter extends Component {
 	render() {
@@ -41,6 +43,11 @@ class IRouter extends Component {
 									<Route path={"/admin/city"} component={City}/>
 									<Route path={"/admin/order"} component={OrderIndex}/>
 								</Admin>
+							}/>
+							<Route path={"/common"} render={() =>
+								<Common>
+									<Route path={"/common/order/:orderId"} component={OrderDetail} />
+								</Common>
 							}/>
 						</App>
 					</Switch>

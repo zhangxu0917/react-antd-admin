@@ -1,6 +1,19 @@
 @import '~antd/dist/antd.css';
 @import './default';
 
+ul li {
+  list-style: none;
+}
+
+.clearfix {
+  &::after{
+    content: ' ';
+    clear: both;
+    visibility: hidden;
+    display: block;
+  }
+}
+
 .admin.container {
   display: flex;
   .nav-left {
@@ -25,14 +38,15 @@
       }
     }
   }
-  .main {
-    flex: 1;
-    height: calc(100vh);
-    overflow: auto;
-    background-color: @colorL;
-    .content {
-      padding: 20px;
-    }
+}
+
+.main {
+  flex: 1;
+  height: calc(100vh);
+  overflow: auto;
+  background-color: @colorL;
+  .content {
+    padding: 20px;
   }
 }
 
@@ -103,4 +117,16 @@
 .avatar-uploader > .ant-upload {
   width: 128px;
   height: 128px;
+}
+
+.simple-page {
+  .header-top {
+    background: #1890ff;
+    color: @colorM
+  }
+  .ant-form,
+  .ant-col-12,
+  .weather{
+    display: none;
+  }
 }

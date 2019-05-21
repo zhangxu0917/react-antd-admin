@@ -71,7 +71,7 @@ export default [{
     key: '/admin/order/index'
   }, {
     title: '订单详情',
-    key: 'detail'
+    key: '/order/detail'
   }, {
     title: '结束订单',
     key: 'finish'
