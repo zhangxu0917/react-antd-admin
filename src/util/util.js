@@ -1,3 +1,7 @@
+import React from 'react';
+import {Select} from 'antd'
+
+const Option = Select.Option;
 export default {
 	formatDate(time) {
 		if (time) {
@@ -7,7 +11,6 @@ export default {
 		return ''
 	},
 	pagination(data, callback) {
-		console.log(data)
 		return {
 			current: data.page,
 			pageSize: data.page_size,
@@ -21,5 +24,15 @@ export default {
 				callback(current)
 			},
 		}
+	},
+	getOptionList(data) {
+		if (!data) {
+			return []
+		}
+		let options = [<Option value={""} key={"all_key"}>全部</Option>];
+		data.forEach((item, index) => {
+			options.push(<Option value={item.id} key={item.name}>{item.name}</Option>)
+		});
+		return options
 	}
 }

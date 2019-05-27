@@ -1,14 +1,12 @@
 import React, {Component} from 'react';
-import {Card, Modal, Form, Select, Button, Table, DatePicker, Badge} from 'antd/lib/index'
+import {Card, Modal, Button, Table, Badge} from 'antd/lib/index'
 import axios from '../../../axios'
 import Util from '../../../util/util'
-import {OrderStatus} from '../../../config/appConfig'
-
-const FormItem = Form.Item;
-const Option = Select.Option
+import {OrderStatus, CityOption} from '../../../config/appConfig'
+import BaseForm from '../../../components/baseForm/index'
 
 class OrderIndex extends Component {
-	constructor (props) {
+	constructor(props) {
 		super(props);
 		this.state = {
 			list: [],
@@ -19,15 +17,45 @@ class OrderIndex extends Component {
 		};
 		this.params = {
 			page: 1
-		}
+		};
+		this.BaseForm = null;
+		this.formList = [{
+			type: "SELECT",
+			label: "城市",
+			field: 'city_id',
+			placeholder: "请选择",
+			initialValue: '1',
+			width: 100,
+			list: CityOption, //CityOption,
+		}, {
+			type: "DATERANGE",
+			label: "订单时间",
+			width: 300
+		}, {
+			type: "SELECT",
+			field: 'order_status',
+			label: "订单状态",
+			placeholder: '请选择',
+			width: 200,
+			list: [
+				{id: '1', name: '进行中'},
+				{id: '2', name: '行程结束'}
+			]
+		}, {
+			type: 'INPUT',
+			label: '订单编号',
+			field: 'order_id',
+			width: 200,
+			placeholder: '订单编号'
+		}]
 	}
 
 	componentDidMount() {
 		this.requestList()
 	}
 
-	openOrderDetail () {
-		let item = this.state.selectedRow
+	openOrderDetail() {
+		let item = this.state.selectedRow;
 		if (!item) {
 			Modal.info({
 				title: '提示',
@@ -38,27 +66,27 @@ class OrderIndex extends Component {
 		this.props.history.push(`/common/order/${item.id}`)
 	}
 
-	requestList () {
+	requestList() {
 		this.setState({
 			loading: true
 		});
 		let list = [];
-		let searchParams = this.filterForm.props.form.getFieldsValue();
-		console.log(searchParams);
+		// let searchParams = this.filterForm.props.form.getFieldsValue();
+		let searchParams = this.BaseForm.props.form.getFieldsValue();
 		axios.request({
 			method: 'get',
 			url: '/order/list',
 			data: {
 				params: {
 					page: this.params.page,
-					status: searchParams.status,
+					status: searchParams.order_status,
 					start_time: searchParams.start_time,
 					end_time: searchParams.end_time,
-					city_id: searchParams.city_id
+					city_id: searchParams.city_id,
+					keyword: searchParams.order_id
 				}
 			}
 		}).then(res => {
-			console.log(res);
 			if (res && res.item_list.length > 0) {
 				list = res.item_list.map((item, index) => {
 					return Object.assign({}, item, {key: index})
@@ -141,7 +169,9 @@ class OrderIndex extends Component {
 		return (
 			<div>
 				<Card>
-					<FilterForm wrappedComponentRef={(inst) => {this.filterForm = inst}} search={this.requestList.bind(this)}/>
+					{/*<FilterForm wrappedComponentRef={(inst) => {this.filterForm = inst}} search={this.requestList.bind(this)}/>*/}
+					<BaseForm formList={this.formList} wrappedComponentRef={(inst) => {this.BaseForm = inst}} transData={this.requestList.bind(this)}/>
+					{/*<BasicTable/>*/}
 				</Card>
 				<Card style={{marginTop: 10}}>
 					<Button type={"primary"} style={{marginRight: 10}} onClick={this.openOrderDetail.bind(this)}>订单详情</Button>
@@ -163,7 +193,8 @@ class OrderIndex extends Component {
 	}
 }
 
-class FilterForm extends Component {
+// TODO 废弃: 使用BaseForm将其替换
+/* class FilterForm extends Component {
 	handleSearch () {
 		this.props.search()
 	}
@@ -209,7 +240,7 @@ class FilterForm extends Component {
 				</FormItem>
 				<FormItem label={"订单状态"}>
 					{
-						getFieldDecorator("status")(
+						getFieldDecorator("order_status")(
 							<Select
 								style={{width: 100}}
 								placeholder={'请选择'}
@@ -231,5 +262,6 @@ class FilterForm extends Component {
 }
 
 FilterForm = Form.create({})(FilterForm);
+*/
 
 export default OrderIndex;

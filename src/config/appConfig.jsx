@@ -29,3 +29,14 @@ export const OrderStatus = {
 	'1': '进行中',
 	'2': '行程结束'
 };
+
+export const CityOption = [{
+	id: '1',
+	name: '北京'
+}, {
+	id: '2',
+	name: '天津'
+}, {
+	id: '3',
+	name: '深圳'
+}];
