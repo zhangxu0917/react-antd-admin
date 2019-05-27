@@ -35,11 +35,20 @@ class BaseForm extends Component {
 						}
 					</FormItem>;
 					formItemList.push(INPUT)
+				} else if (item.type === 'DATE') {
+					const DATE = <FormItem label={label} key={field}>
+						{
+							getFieldDecorator([field])(
+								<DatePicker showTime={true} format={'YYYY-MM-DD hh:mm:ss'} placeholder={placeholder}/>
+							)
+						}
+					</FormItem>;
+					formItemList.push(DATE)
 				} else if (item.type === 'DATERANGE') {
 					const STARTTIME = <FormItem label={label} key={"start_time"}>
 						{
 							getFieldDecorator('start_time')(
-								<DatePicker showTime={true} format={"YYYY-MM-DD hh:mm:ss"}/>
+								<DatePicker format={"YYYY-MM-DD"} placeholder={placeholder}/>
 							)
 						}
 					</FormItem>;
@@ -104,7 +113,7 @@ class BaseForm extends Component {
 				{ this.initFormList() }
 				<FormItem>
 					<Button type={"primary"} style={{margin: '0 20'}} onClick={this.handleSubmit.bind(this)}>查询</Button>
-					<Button onClick={this.handleResetForm.bind(this)}>重置</Button>
+					<Button onClick={this.handleResetForm.bind(this)} style={{marginLeft: '15px'}}>重置</Button>
 				</FormItem>
 			</Form>
 		);

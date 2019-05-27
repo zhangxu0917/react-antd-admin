@@ -193,7 +193,7 @@ class OrderIndex extends Component {
 	}
 }
 
-// TODO 废弃: 使用BaseForm将其替换
+// TODO 废弃: 使用基础组件BaseForm将其替换
 /* class FilterForm extends Component {
 	handleSearch () {
 		this.props.search()
