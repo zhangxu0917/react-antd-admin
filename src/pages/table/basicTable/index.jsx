@@ -6,17 +6,18 @@ import util from '../../../util/util'
 
 class BasicTable extends Component {
 	constructor(props) {
-		super(props)
+		super(props);
 		this.state = {
 			dynamicUserList: [],
 			dynamicUserList02: [],
+			selectedItem: {},
 			selectedRowKeys: [],
 			selectedRows: [],
 			selectedRowCheckKeys: [],
 			loading: false,
 			loading02: false,
 			pagination: {}
-		}
+		};
 		this.params = {
 			page: 1
 		}
