@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {Card, Row, Col, Modal} from "antd";
 
 class Gallery extends Component {
@@ -92,7 +91,5 @@ class Gallery extends Component {
 		);
 	}
 }
-
-Gallery.propTypes = {};
 
 export default Gallery;

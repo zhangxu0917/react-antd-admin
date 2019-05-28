@@ -86,8 +86,7 @@ class BasicTable extends Component {
 	}
 
 	handleDelete() {
-		let rows = this.state.selectedRows;
-		let ids = this.state.selectedRows.map(item => item.id)
+		let ids = this.state.selectedRows.map(item => item.id);
 
 		Modal.confirm({
 			title: '提示',

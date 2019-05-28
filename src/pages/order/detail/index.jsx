@@ -72,7 +72,7 @@ class OrderDetail extends Component {
 				imageSize: new window.BMap.Size(36, 42),
 				anchor: new window.BMap.Size(36, 42)
 			});
-			let endMark = new window.BMap.Marker(endPoint, {icon: endIcon})
+			let endMark = new window.BMap.Marker(endPoint, {icon: endIcon});
 			this.map.addOverlay(endMark);
 
 			// 连接路线图

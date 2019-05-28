@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Row, Col} from 'antd'
+import {Row, Col, Button} from 'antd'
 import Util from '../../util/util'
 import Axios from '../../axios/index'
 import PropTypes from 'prop-types';
@@ -57,7 +57,7 @@ class Header extends Component {
 								</Col>
 								<Col span={18}>
 									<span>欢迎，{this.state.username}</span>
-									<a href="#">退出</a>
+									<Button type={"link"}>退出</Button>
 								</Col>
 							</section>
 						) : (

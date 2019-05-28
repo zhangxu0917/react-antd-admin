@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import PropTypes from 'prop-types';
 import {Card, notification, Button} from "antd";
 
 class Notification extends Component {
@@ -36,7 +35,5 @@ class Notification extends Component {
 		);
 	}
 }
-
-Notification.propTypes = {};
 
 export default Notification;

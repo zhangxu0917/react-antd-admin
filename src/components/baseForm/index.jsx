@@ -48,14 +48,14 @@ class BaseForm extends Component {
 					const STARTTIME = <FormItem label={label} key={"start_time"}>
 						{
 							getFieldDecorator('start_time')(
-								<DatePicker format={"YYYY-MM-DD"} placeholder={placeholder}/>
+								<DatePicker format={"YYYY-MM-DD"} placeholder={'请选择开始时间'}/>
 							)
 						}
 					</FormItem>;
 					const ENDTIME = <FormItem label={""} key={"end_time"}>
 						{
 							getFieldDecorator('end_time')(
-								<DatePicker showTime={true} format={'YYYY-MM-DD hh:mm:ss'}/>
+								<DatePicker showTime={true} format={'YYYY-MM-DD hh:mm:ss'} placeholder={'请选择结束时间'}/>
 							)
 						}
 					</FormItem>;

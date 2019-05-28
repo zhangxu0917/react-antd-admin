@@ -52,7 +52,6 @@ class HighTable extends Component {
 	// FIXME: 删除操作
 	handleDelete (e, item) {
 		e.preventDefault();
-		let id = item.id;
 		Modal.confirm({
 			title: '提示',
 			content: '您确定要删除当前数据么？',
