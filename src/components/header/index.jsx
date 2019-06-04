@@ -4,6 +4,7 @@ import Util from '../../util/util'
 import Axios from '../../axios/index'
 import PropTypes from 'prop-types';
 import './index.less'
+import {connect} from 'react-redux'
 
 
 class Header extends Component {
@@ -74,7 +75,7 @@ class Header extends Component {
 						? ''
 						: (<Row className="breadcrumb">
 							<Col span={4} className="breadcrumb-title">
-								首页
+								{this.props.menuName}
 							</Col>
 							<Col span={20} className="weather">
 								<span className="date">{this.state.sysTime}</span>
@@ -92,4 +93,10 @@ Header.propTypes = {
 	menuType: PropTypes.string
 };
 
-export default Header;
+const mapStateToProps = state => {
+	return {
+		menuName: state.menuName
+	}
+};
+
+export default connect(mapStateToProps)(Header);

@@ -4,9 +4,6 @@ import BaseForm from '../../components/baseForm/index'
 import {CityOption, OrderStatus} from '../../config/appConfig'
 import axios from '../../axios/index'
 
-// import PropTypes from 'prop-types';
-
-
 class MyComponent extends Component {
 	constructor(props) {
 		super(props);

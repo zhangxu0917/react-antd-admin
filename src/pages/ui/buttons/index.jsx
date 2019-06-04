@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Card, Button, Radio} from 'antd'
 
-const ButtonGroup = Button.Group
-const RadioGroup = Radio.Group
+const ButtonGroup = Button.Group;
+const RadioGroup = Radio.Group;
 
 class Buttons extends Component {
 	constructor(props) {
-		super(props)
+		super(props);
 		this.state = {
 			btnSize: 'default',
 			btnLoading: false

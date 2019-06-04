@@ -6,7 +6,7 @@ class Home extends Component {
 	render() {
 		return (
 			<div className="home-wrap">
-				niniininin
+				 欢迎访问React AntD后台管理系统
 			</div>
 		);
 	}

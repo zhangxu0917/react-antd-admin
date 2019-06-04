@@ -196,6 +196,7 @@ class BasicTable extends Component {
 			type: 'checkbox',
 			selectedRowKeys: this.state.selectedRowCheckKeys,
 			onChange: (selectedRowKeys, selectedRows) => {
+				// console.log(selectedRowKeys, selectedRows)
 				this.setState({
 					selectedRowCheckKeys: selectedRowKeys,
 					selectedRows
